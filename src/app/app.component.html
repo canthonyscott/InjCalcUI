@@ -1,3 +1,6 @@
 <h1>
   {{title}}
+  <div *ngIf="!authorized">
+    <app-login-component></app-login-component>
+  </div>
 </h1>
