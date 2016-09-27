@@ -10,13 +10,16 @@ import { LoginService } from '../login.service';
 export class LoginComponent implements OnInit {
 
   token: string;
-  response: string = "before";
+  authorized: boolean = false;
 
   constructor(private loginService: LoginService) { }
 
   login(username: string, password: string){
-    // this.loginService.getAuthToken(username, password).then(res => console.log(res));
-    this.loginService.testServer().then(res => this.response = res);
+    // this.loginService.getAuthToken(username, password).then(res => this.response = res.valueOf());
+    // this.loginService.testServer().then(res => this.response = res);
+    this.loginService.getAuthToken(username, password)
+      .subscribe(resp => this.token = resp);
+    this.authorized = true;
   }
 
 

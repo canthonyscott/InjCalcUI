@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import {Http, Headers, Response} from '@angular/http';
 
 import { User } from './user';
 
 import 'rxjs/add/operator/toPromise';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class LoginService{
@@ -14,26 +15,29 @@ export class LoginService{
 
   constructor(private http: Http) { }
 
-  private handleError(error: any): Promise<any> {
-    console.log("My Error caught: ", error);
-    return Promise.reject(error.message || error)
-  }
-
-  testServer(): Promise<string> {
-    return this.http
-      .get('https://canthonyscott.com:1107/api/')
-      .toPromise()
-      .then(res => res.json())
-      .catch(this.handleError)
-  }
-
-  getAuthToken(username: string, password: string): Promise<string> {
+  getAuthToken(username: string, password: string): Observable<any> {
     return this.http
       .post(this.login_url, JSON.stringify({username: username, password:password}), {headers: this.headers})
-      .toPromise()
-      .then(res => res.json())
+      .map(this.extractToken)
       .catch(this.handleError);
   }
+
+  extractToken(res: Response){
+    let body = res.json();
+    sessionStorage.setItem('auth_token', body.token);
+    return body.token || { };
+  }
+
+  private handleError (error: any) {
+      // In a real world app, we might use a remote logging infrastructure
+      // We'd also dig deeper into the error to get a better message
+      let errMsg = (error.message) ? error.message :
+        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+      console.error(errMsg); // log to console instead
+      return Observable.throw(errMsg);
+    }
+
+
 
 
 }

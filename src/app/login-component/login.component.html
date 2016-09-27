@@ -1,13 +1,11 @@
-<div class="login">
-  <h4>Login</h4>
-  <div class="form-group">
-    <label>Username: </label><input type="text" class="form-control" #username required>
-    <label>Password:</label><input type="password" class="form-control" #password required>
-    <button (click)="login(username.value, password.value)"></button>
+
+  <div class="login">
+    <h4>Login</h4>
+    <div class="form-group">
+      <label>Username: </label><input type="text" class="form-control" #username required>
+      <label>Password:</label><input type="password" class="form-control" #password required>
+      <button class="btn btn-success" (click)="login(username.value, password.value)">Login!</button>
+    </div>
   </div>
 
-<p>{{response}}</p>
-
-
-
-</div>
+  <p>{{token}}</p>
