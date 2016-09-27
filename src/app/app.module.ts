@@ -9,6 +9,7 @@ import {LoginService} from "./login.service";
 import { routing } from './app.routing';
 import { OligosComponent } from './oligos/oligos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {AuthGuard} from "./_guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     routing
   ],
-  providers: [LoginService],
+  providers: [LoginService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

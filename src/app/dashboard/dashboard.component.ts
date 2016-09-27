@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  test = 'test';
   constructor(private router: Router) { }
 
 
@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
       let link = ['/login'];
       this.router.navigate(link);
     }
+
     // TODO Load a menu of options to do (Show Oligos, Add Oligo, Delete Oligos, History?)
     // else{
     //   let link = ['/oligos'];

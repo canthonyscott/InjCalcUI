@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router'
 import { LoginComponent } from './login-component/login.component';
 import { OligosComponent } from './oligos/oligos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from "./_guards/auth.guard";
 
 
 const appRoutes: Routes = [
@@ -20,7 +21,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'oligos',
-    component: OligosComponent
+    component: OligosComponent,
+    canActivate: [AuthGuard]
+  },
+  // otherwise redirect to home
+  {
+    path: '**',
+    redirectTo: ''
   }
 
 ];

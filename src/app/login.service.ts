@@ -9,8 +9,8 @@ import {Observable} from "rxjs";
 @Injectable()
 export class LoginService{
 
+  public token: string;
   private headers = new Headers({'Content-Type': 'application/json'});
-
   private login_url = 'https://canthonyscott.com:1107/api/api-token-auth/';
 
   constructor(private http: Http) { }
@@ -18,24 +18,35 @@ export class LoginService{
   getAuthToken(username: string, password: string): Observable<any> {
     return this.http
       .post(this.login_url, JSON.stringify({username: username, password:password}), {headers: this.headers})
-      .map(this.extractToken)
+      .map((response:Response) =>{
+        // login if token is in response
+        let token = response.json() && response.json().token;
+        if(token){
+          this.token = token;
+          sessionStorage.setItem('auth_token', JSON.stringify({username: username, token: token}));
+          // return true for successful login
+          return true;
+        } else {
+          // return false for failure
+          return false;
+        }
+      })
       .catch(this.handleError);
   }
 
-  extractToken(res: Response){
-    let body = res.json();
-    // sessionStorage.setItem('auth_token', body.token);
-    return body.token || { };
-  }
-
-  private handleError (error: any) {
+  private handleError(error: any): any {
       // In a real world app, we might use a remote logging infrastructure
       // We'd also dig deeper into the error to get a better message
       let errMsg = (error.message) ? error.message :
         error.status ? `${error.status} - ${error.statusText}` : 'Server error';
       console.error(errMsg); // log to console instead
-      return Observable.throw(errMsg);
+      return false;
     }
+
+  logout(): void {
+    this.token = null;
+    sessionStorage.clear();
+  }
 
 
 

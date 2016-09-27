@@ -6,6 +6,8 @@
       <label>Password:</label><input type="password" class="form-control" #password required>
       <button class="btn btn-success" (click)="login(username.value, password.value)">Login!</button>
     </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
   </div>
 
   <p>{{token}}</p>
