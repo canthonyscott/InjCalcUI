@@ -1,0 +1,15 @@
+.login{
+  border: solid 0.5px;
+  padding: 10px;
+  max-width: 500px;
+  background-color: gainsboro;
+  margin: auto;
+}
+
+.btn {
+  margin-top: 15px;
+}
+
+h4{
+  text-align: center;
+}

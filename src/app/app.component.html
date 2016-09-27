@@ -1,9 +1,7 @@
 <div class="container">
 
   <h1>{{title}}</h1>
-  <div *ngIf="!auth_token">
-    <app-login-component></app-login-component>
-  </div>
+
   <router-outlet></router-outlet>
 
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import './rxjs-operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,9 @@ export class AppComponent implements OnInit{
   title = 'app works!';
   auth_token: any;
 
+  constructor(private router: Router){}
+
   ngOnInit(){
-    // get auth_token from sessionStorage
-  this.auth_token = sessionStorage.getItem('auth_token');
-    // if it doesnt exist, set to false => this will display login prompt
-    if (this.auth_token == null){
-      this.auth_token = false;
-    }
 
   }
 

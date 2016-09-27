@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-component',
@@ -10,16 +11,17 @@ import { LoginService } from '../login.service';
 export class LoginComponent implements OnInit {
 
   token: string;
-  authorized: boolean = false;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   login(username: string, password: string){
-    // this.loginService.getAuthToken(username, password).then(res => this.response = res.valueOf());
-    // this.loginService.testServer().then(res => this.response = res);
     this.loginService.getAuthToken(username, password)
-      .subscribe(resp => this.token = resp);
-    this.authorized = true;
+      .subscribe(resp =>{
+        this.token = resp;
+        sessionStorage.setItem('auth_token', this.token);
+        let link = [''];
+        this.router.navigate(link);
+      });
   }
 
 

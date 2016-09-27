@@ -24,7 +24,7 @@ export class LoginService{
 
   extractToken(res: Response){
     let body = res.json();
-    sessionStorage.setItem('auth_token', body.token);
+    // sessionStorage.setItem('auth_token', body.token);
     return body.token || { };
   }
 
