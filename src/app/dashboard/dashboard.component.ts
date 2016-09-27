@@ -9,8 +9,7 @@ import { LoginService } from '../login.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
     if(sessionStorage.getItem('auth_token') == null ){
@@ -25,5 +24,10 @@ export class DashboardComponent implements OnInit {
     //   this.router.navigate(link);
     // }
   }
+
+  logout(): void{
+    this.loginService.logout();
+  }
+
 
 }
