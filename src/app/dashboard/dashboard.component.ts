@@ -12,10 +12,13 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem('auth_token') == null ){
+    let stored_token = sessionStorage.getItem('auth_token');
+    if(stored_token == null ){
       // USER IS NOT LOGGED IN - ROUTE TO LOGIN
       let link = ['/login'];
       this.router.navigate(link);
+    } else {
+      this.loginService.setToken(stored_token)
     }
 
     // TODO Load a menu of options to do (Show Oligos, Add Oligo, Delete Oligos, History?)

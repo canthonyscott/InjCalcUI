@@ -9,13 +9,14 @@ import {Observable} from "rxjs";
 @Injectable()
 export class LoginService{
 
-  public token: string;
+  private token: string;
   private headers = new Headers({'Content-Type': 'application/json'});
   private login_url = 'https://canthonyscott.com:1107/api/api-token-auth/';
 
   constructor(private http: Http) { }
 
-  getAuthToken(username: string, password: string): Observable<any> {
+
+  login(username: string, password: string): Observable<any> {
     return this.http
       .post(this.login_url, JSON.stringify({username: username, password:password}), {headers: this.headers})
       .map((response:Response) =>{
@@ -23,7 +24,8 @@ export class LoginService{
         let token = response.json() && response.json().token;
         if(token){
           this.token = token;
-          sessionStorage.setItem('auth_token', JSON.stringify({username: username, token: token}));
+          sessionStorage.setItem('auth_token', token);
+          sessionStorage.setItem('username', username);
           // return true for successful login
           return true;
         } else {
@@ -46,6 +48,14 @@ export class LoginService{
   logout(): void {
     this.token = null;
     sessionStorage.clear();
+  }
+
+  getToken(): string{
+    return this.token;
+}
+
+  setToken(newToken: string): void {
+    this.token = newToken;
   }
 
 

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router) { }
 
   login(username: string, password: string){
-    this.loginService.getAuthToken(username, password)
+    this.loginService.login(username, password)
       .subscribe(resp => {
         if(resp === true){
           // login successful

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from "../login.service";
 
 @Component({
   selector: 'app-oligos',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OligosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
+  token = 'test';
+
+  getIt(): void{
+    this.token = this.loginService.getToken();
+  }
 
   ngOnInit() {
   }
