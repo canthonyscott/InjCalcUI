@@ -11,6 +11,7 @@ import { Oligo } from'../oligo';
 export class OligosComponent implements OnInit {
 
   oligos: Oligo[];
+  selectedOligo: Oligo;
 
   constructor(
     private loginService: LoginService,
@@ -23,6 +24,14 @@ export class OligosComponent implements OnInit {
         oligos => this.oligos = oligos,
         error => console.log(error)
       )
+  }
+
+  logout(): void{
+    this.loginService.logout();
+  }
+
+  updateSelectedOligo(oligo: Oligo): void {
+    this.selectedOligo = oligo;
   }
 
 }

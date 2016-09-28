@@ -17,7 +17,7 @@ import {OligosService} from "./oligos.service";
     AppComponent,
     LoginComponent,
     OligosComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,35 @@
-<p>
-  oligos works!
-</p>
+<div class="container">
+  <div class="row">
+    <nav>
+      <a routerLink="/" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+    </nav>
+  </div>
+  <div class="row">
+    <div class="col-md-9 col-lg-9 col-xl-9 no-scroll">
+      <table class="table table-hover">
+        <tr>
+          <th>Gene</th>
+          <th>Mol. Wt.</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        <tr *ngFor="let oligo of oligos" (mouseover)="updateSelectedOligo(oligo)">
+          <td>{{oligo.gene}}</td>
+          <td>{{oligo.molecular_weight}}</td>
+          <td><button class="btn btn-primary btn-sm">Edit</button> </td>
+          <td><button class="btn btn-danger btn-sm">Delete</button></td>
+        </tr>
+      </table>
 
-<ul class="oligos">
-  <li *ngFor="let oligo of oligos">
-    {{oligo.gene}}
-  </li>
-</ul>
+    </div>
+    <div class="col-md-3 col-lg-3 col-xl-3" *ngIf="selectedOligo">
+      {{selectedOligo.pk}}<br>
+      {{selectedOligo.gene}}<br>
+      {{selectedOligo.molecular_weight}}<br>
+      {{selectedOligo.added_by}}<br>
+    </div>
+
+  </div>
+
+</div>
