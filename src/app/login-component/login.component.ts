@@ -3,6 +3,7 @@ import { User } from '../user';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login-component',
   templateUrl: 'login.component.html',
@@ -15,15 +16,12 @@ export class LoginComponent implements OnInit {
 
   login(username: string, password: string){
     this.loginService.login(username, password)
-      .subscribe(resp => {
-        if(resp === true){
-          // login successful
-          this.router.navigate(['/']);
-        } else {
-          // login failed
-          this.error = 'Username of password is incorrect';
-        }
-      });
+      .subscribe(
+        login => {
+          if(login === true){this.router.navigate(['/']);}
+        },
+        error => this.error = "Username or password is incorrect"
+      );
   }
 
 
