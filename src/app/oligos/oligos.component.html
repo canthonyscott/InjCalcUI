@@ -2,6 +2,8 @@
   oligos works!
 </p>
 
-<div (click)="getIt()">
-  token: {{token}}
-</div>
+<ul class="oligos">
+  <li *ngFor="let oligo of oligos">
+    {{oligo.gene}}
+  </li>
+</ul>

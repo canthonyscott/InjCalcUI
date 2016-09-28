@@ -16,27 +16,6 @@ export class LoginService{
 
   constructor(private http: Http) { }
 
-
-  // login(username: string, password: string): Observable<any> {
-  //   return this.http
-  //     .post(this.login_url, JSON.stringify({username: username, password:password}), {headers: this.headers})
-  //     .map((response:Response) =>{
-  //       // login if token is in response
-  //       let token = response.json() && response.json().token;
-  //       if(token){
-  //         this.token = token;
-  //         sessionStorage.setItem('auth_token', token);
-  //         sessionStorage.setItem('username', username);
-  //         // return true for successful login
-  //         return true;
-  //       } else {
-  //         // return false for failure
-  //         return false;
-  //       }
-  //     })
-  //     .catch(this.handleError);
-  // }
-
   login(username: string, password: string): Observable<any> {
     return this.http
       .post(this.login_url, JSON.stringify({username: username, password:password}), {headers: this.headers})

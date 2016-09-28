@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../login.service";
+import {OligosService} from "../oligos.service";
+import { Oligo } from'../oligo';
 
 @Component({
   selector: 'app-oligos',
@@ -8,14 +10,19 @@ import {LoginService} from "../login.service";
 })
 export class OligosComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
-  token = 'test';
+  oligos: Oligo[];
 
-  getIt(): void{
-    this.token = this.loginService.getToken();
-  }
+  constructor(
+    private loginService: LoginService,
+    private oligoService: OligosService) { }
+
 
   ngOnInit() {
+    this.oligoService.get_oligos()
+      .subscribe(
+        oligos => this.oligos = oligos,
+        error => console.log(error)
+      )
   }
 
 }

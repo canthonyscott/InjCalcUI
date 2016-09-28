@@ -21,11 +21,6 @@ export class DashboardComponent implements OnInit {
       this.loginService.setToken(stored_token)
     }
 
-    // TODO Load a menu of options to do (Show Oligos, Add Oligo, Delete Oligos, History?)
-    // else{
-    //   let link = ['/oligos'];
-    //   this.router.navigate(link);
-    // }
   }
 
   logout(): void{

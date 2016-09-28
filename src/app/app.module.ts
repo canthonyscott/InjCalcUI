@@ -10,6 +10,7 @@ import { routing } from './app.routing';
 import { OligosComponent } from './oligos/oligos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AuthGuard} from "./_guards/auth.guard";
+import {OligosService} from "./oligos.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {AuthGuard} from "./_guards/auth.guard";
     HttpModule,
     routing
   ],
-  providers: [LoginService, AuthGuard],
+  providers: [LoginService, OligosService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
