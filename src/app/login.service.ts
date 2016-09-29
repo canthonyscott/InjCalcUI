@@ -53,11 +53,20 @@ export class LoginService{
   }
 
   getToken(): string{
+    this.fetchStoredToken();
     return this.token;
 }
 
   setToken(newToken: string): void {
     this.token = newToken;
+  }
+
+  fetchStoredToken(): string{
+    let stored_token = sessionStorage.getItem('auth_token');
+    if (stored_token != null){
+      this.setToken(stored_token);
+    }
+    return stored_token;
   }
 
 

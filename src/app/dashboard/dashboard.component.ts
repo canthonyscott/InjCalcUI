@@ -12,15 +12,12 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit() {
-    let stored_token = sessionStorage.getItem('auth_token');
+    let stored_token = this.loginService.fetchStoredToken();
     if(stored_token == null ){
       // USER IS NOT LOGGED IN - ROUTE TO LOGIN
       let link = ['/login'];
       this.router.navigate(link);
-    } else {
-      this.loginService.setToken(stored_token)
     }
-
   }
 
   logout(): void{

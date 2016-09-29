@@ -23,11 +23,17 @@
       </table>
 
     </div>
-    <div class="col-md-3 col-lg-3 col-xl-3" *ngIf="selectedOligo">
-      {{selectedOligo.pk}}<br>
-      {{selectedOligo.gene}}<br>
-      {{selectedOligo.molecular_weight}}<br>
-      {{selectedOligo.added_by}}<br>
+    <div class="hidden-xs col-md-3 col-lg-3 col-xl-3" *ngIf="selectedOligo">
+      <div class="detail-box">
+        <div class="property">gene</div>
+        <div class="value">{{selectedOligo.gene}}</div>
+        <div class="property">molecular weight</div>
+        <div class="value">{{selectedOligo.molecular_weight}}</div>
+        <div class="property">id</div>
+        <div class="value">{{selectedOligo.pk}}</div>
+        <div class="property">added by</div>
+        <div class="value">{{selectedOligo.added_by}}</div>
+      </div>
     </div>
 
   </div>

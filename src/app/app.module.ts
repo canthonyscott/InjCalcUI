@@ -11,13 +11,14 @@ import { OligosComponent } from './oligos/oligos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {AuthGuard} from "./_guards/auth.guard";
 import {OligosService} from "./oligos.service";
+import { AddOligoComponent } from './add-oligo/add-oligo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     OligosComponent,
-    DashboardComponent,
+    DashboardComponent, AddOligoComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { LoginComponent } from './login-component/login.component';
 import { OligosComponent } from './oligos/oligos.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from "./_guards/auth.guard";
+import {AddOligoComponent} from "./add-oligo/add-oligo.component";
 
 
 const appRoutes: Routes = [
@@ -22,8 +23,14 @@ const appRoutes: Routes = [
   {
     path: 'oligos',
     component: OligosComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
+  {
+    path:'oligos/add',
+    component: AddOligoComponent,
+    canActivate:[AuthGuard]
+  },
+
   // otherwise redirect to home
   {
     path: '**',

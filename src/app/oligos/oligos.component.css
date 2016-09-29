@@ -2,3 +2,18 @@
   height: 600px;
   overflow: auto;
 }
+
+.property{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  text-decoration: underline;
+
+}
+.value{
+  margin-bottom: 7px;
+}
+
+.detail-box{
+  border: solid 1px;
+  padding: 5px;
+  background-color: gainsboro;
+}
