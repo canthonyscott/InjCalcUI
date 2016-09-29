@@ -5,6 +5,7 @@ import { Oligo } from './oligo';
 import {LoginService} from "./login.service";
 import {Observable} from "rxjs";
 
+
 @Injectable()
 export class OligosService {
 
@@ -22,6 +23,15 @@ export class OligosService {
       .catch(this.handleError);
   }
 
+  delete_oligo(oligo: Oligo): Promise<any> {
+    let del_url = this.oligos_url + oligo.pk.toString() + '/';
+    console.log(del_url);
+    return this.http.delete(del_url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError)
+  }
+
   private handleError (error: any) {
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message
@@ -31,6 +41,8 @@ export class OligosService {
     return Observable.throw(errMsg);
     // return false;
   }
+
+
 
 
 

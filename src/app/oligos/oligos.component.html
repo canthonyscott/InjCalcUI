@@ -1,8 +1,8 @@
-<div class="container">
+
   <div class="row">
     <nav>
-      <a routerLink="/" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
+      <a class="nav-link" routerLink="/" routerLinkActive="active">Dashboard</a>
+      <a class="nav-link" routerLink="/login" routerLinkActive="active" (click)="logout()">Logout</a>
     </nav>
   </div>
   <div class="row">
@@ -18,7 +18,7 @@
           <td>{{oligo.gene}}</td>
           <td>{{oligo.molecular_weight}}</td>
           <td><button class="btn btn-primary btn-sm">Edit</button> </td>
-          <td><button class="btn btn-danger btn-sm">Delete</button></td>
+          <td><button class="btn btn-danger btn-sm" (click)="deleteOligo(oligo); $event.stopPropagation()">Delete</button></td>
         </tr>
       </table>
 
@@ -38,4 +38,3 @@
 
   </div>
 
-</div>

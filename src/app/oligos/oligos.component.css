@@ -10,10 +10,18 @@
 }
 .value{
   margin-bottom: 7px;
+  text-indent: 15px;
+  font: menu;
 }
 
 .detail-box{
   border: solid 1px;
   padding: 5px;
   background-color: gainsboro;
+  border-radius: 10px;
+}
+
+th{
+  background-color: darkslategray;
+  color: ghostwhite;
 }

@@ -9,8 +9,7 @@ import { LoginService } from './login.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'app works!';
-  auth_token: any;
+  title = 'MicroInjection Calculator';
 
   constructor(private router: Router){}
 

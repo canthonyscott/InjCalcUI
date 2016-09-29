@@ -34,4 +34,12 @@ export class OligosComponent implements OnInit {
     this.selectedOligo = oligo;
   }
 
+  deleteOligo(oligo: Oligo): void {
+    this.oligoService.delete_oligo(oligo)
+      .then(()=>{
+        this.oligos = this.oligos.filter(o => o !== oligo);
+        if (this.selectedOligo === oligo){this.selectedOligo = null}
+      })
+  }
+
 }
