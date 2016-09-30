@@ -1,13 +1,9 @@
 image: node:6.6.0
 
-before_script:
-  - npm install -g angular-cli
-  only:
-  - master
-  
 generate_js:
   type: build
   script:
+  - npm install -g angular-cli
   - ng build
   only:
   - master
