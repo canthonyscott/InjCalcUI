@@ -4,6 +4,7 @@ generate_js:
   type: build
   script:
   - npm install -g angular-cli
+  - npm install
   - ng build
   only:
   - master
