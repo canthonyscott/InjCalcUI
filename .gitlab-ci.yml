@@ -1,7 +1,6 @@
 image: node:6.6.0
 
-install_angular2_cli:
-  script:
+before_script:
   - npm install -g angular-cli
   only:
   - master
