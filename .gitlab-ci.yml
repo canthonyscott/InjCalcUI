@@ -1,0 +1,21 @@
+image: node:6.6.0
+
+install_angular2_cli:
+	script: "npm install -g angular-cli"
+	only:
+	- master
+	
+generate_js:
+	type: build
+	script:
+	- ng build
+	only:
+	- master
+	
+move_files:
+	type: deploy
+	script:
+	- cp dist/* /home/anthony/TEST_DEP
+	only:
+	- master
+
