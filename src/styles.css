@@ -4,6 +4,7 @@ nav {
   padding: 12px;
   background-color: #0F965C;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.24);
+  margin-bottom: 8px;
 }
 
 .nav-link {

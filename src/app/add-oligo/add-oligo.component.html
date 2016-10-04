@@ -1,3 +1,19 @@
-<p>
-  add-oligo works!
-</p>
+<div class="row">
+  <nav>
+    <a class="nav-link" routerLink="/" routerLinkActive="active">Dashboard</a>
+    <a class="nav-link" routerLink="/oligos" routerLinkActive="active">Show All</a>
+  </nav>
+</div>
+
+
+<div class="row add-form">
+  <div class="form-group">
+    <label>Oligo name: </label><input #gene type="text" class="form-control" required>
+    <label>Molecular Weight: </label><input #molecular_weight type="number" class="form-control" required>
+    <button class="btn btn-primary" (click)="add_oligo(gene.value, molecular_weight.value); gene.value=''; molecular_weight.value=''">Add Oligo!</button>
+  </div>
+
+  <div *ngIf="response" class="alert alert-success">{{response}}</div>
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+</div>

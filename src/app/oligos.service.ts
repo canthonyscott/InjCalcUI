@@ -23,13 +23,19 @@ export class OligosService {
       .catch(this.handleError);
   }
 
-  delete_oligo(oligo: Oligo): Promise<any> {
+  destroy(oligo: Oligo): Promise<any> {
     let del_url = this.oligos_url + oligo.pk.toString() + '/';
     console.log(del_url);
     return this.http.delete(del_url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError)
+  }
+
+  create(oligo: Oligo): Observable<any> {
+    return this.http.post(this.oligos_url, JSON.stringify(oligo), {headers: this.headers})
+      .map((response: Response) => console.log(response))
+      .catch(this.handleError);
   }
 
   private handleError (error: any) {
