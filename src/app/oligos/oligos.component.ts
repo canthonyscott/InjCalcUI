@@ -41,5 +41,4 @@ export class OligosComponent implements OnInit {
         if (this.selectedOligo === oligo){this.selectedOligo = null}
       })
   }
-
 }

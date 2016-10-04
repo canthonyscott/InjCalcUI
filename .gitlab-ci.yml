@@ -6,6 +6,11 @@ generate_js:
   - npm install -g angular-cli
   - npm install
   - ng build
+  artifacts:
+    paths:
+      - dist/
+  cache:
+    untracked: true
   only:
   - master
   
