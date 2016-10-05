@@ -25,3 +25,12 @@ th{
   background-color: darkslategray;
   color: ghostwhite;
 }
+
+.btn-left{
+
+}
+
+.btn-right{
+  position: absolute;
+  right: 20px;
+}
