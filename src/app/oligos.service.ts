@@ -17,7 +17,7 @@ export class OligosService {
   private oligos_url = 'https://www.canthonyscott.com:1107/api/oligos/';
   private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Token ' + this.loginService.getToken() });
 
-  get_oligos(): Observable<any> {
+  retrieve(): Observable<any> {
     return this.http.get(this.oligos_url, {headers: this.headers})
       .map((response:Response) => response.json() as Oligo[])
       .catch(this.handleError);

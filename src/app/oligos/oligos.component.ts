@@ -22,7 +22,7 @@ export class OligosComponent implements OnInit {
 
 
   ngOnInit() {
-    this.oligoService.get_oligos()
+    this.oligoService.retrieve()
       .subscribe(
         oligos => this.oligos = oligos,
         error => console.log(error)
