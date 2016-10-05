@@ -12,6 +12,9 @@ export class OligosComponent implements OnInit {
 
   oligos: Oligo[];
   selectedOligo: Oligo;
+  disabled: boolean = true;
+  response: string = '';
+  error: string = '';
 
   constructor(
     private loginService: LoginService,
@@ -28,6 +31,9 @@ export class OligosComponent implements OnInit {
 
   updateSelectedOligo(oligo: Oligo): void {
     this.selectedOligo = oligo;
+    this.disabled = true;
+    this.response = '';
+    this.error = '';
   }
 
   deleteOligo(oligo: Oligo): void {
@@ -36,5 +42,19 @@ export class OligosComponent implements OnInit {
         this.oligos = this.oligos.filter(o => o !== oligo);
         if (this.selectedOligo === oligo){this.selectedOligo = null}
       })
+  }
+
+  enable_edit(): void {
+    this.disabled = false;
+  }
+
+  update_edits(oligo: Oligo): void{
+    oligo.added_by = 'edited by web user';
+    this.oligoService.update(oligo)
+      .subscribe(
+        response => this.response = "Successfully updated oligo!",
+        error => this.error = "Something went horribly wrong!"
+      );
+    this.disabled = true;
   }
 }

@@ -38,6 +38,13 @@ export class OligosService {
       .catch(this.handleError);
   }
 
+  update(oligo: Oligo): Observable<any> {
+    let put_url = this.oligos_url + oligo.pk.toString() + '/';
+    return this.http.put(put_url, JSON.stringify(oligo), {headers: this.headers})
+      .map((response: Response) => console.log(response))
+      .catch(this.handleError);
+  }
+
   private handleError (error: any) {
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message

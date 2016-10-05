@@ -1,42 +1,58 @@
+<div class="row">
+  <nav>
+    <a class="nav-link" routerLink="/" routerLinkActive="active">Dashboard</a>
+    <a class="nav-link" routerLink="/oligos/add" routerLinkActive="active">Add Oligo</a>
+  </nav>
+</div>
+<div class="row">
+  <div class="col-md-9 col-lg-9 col-xl-9 no-scroll">
+    <table class="table table-hover">
+      <tr>
+        <th>Gene</th>
+        <th>Mol. Wt.</th>
+        <!--<th>Edit</th>-->
+        <!--<th>Delete</th>-->
+      </tr>
+      <tr *ngFor="let oligo of oligos" (mouseover)="updateSelectedOligo(oligo)">
+        <td>{{oligo.gene}}</td>
+        <td>{{oligo.molecular_weight}}</td>
+        <!--<td><button class="btn btn-primary btn-sm">Edit</button> </td>-->
+        <!--<td><button class="btn btn-danger btn-sm" (click)="deleteOligo(oligo); $event.stopPropagation()">Delete</button></td>-->
+      </tr>
+    </table>
 
-  <div class="row">
-    <nav>
-      <a class="nav-link" routerLink="/" routerLinkActive="active">Dashboard</a>
-      <a class="nav-link" routerLink="/oligos/add" routerLinkActive="active">Add Oligo</a>
-    </nav>
   </div>
-  <div class="row">
-    <div class="col-md-9 col-lg-9 col-xl-9 no-scroll">
-      <table class="table table-hover">
-        <tr>
-          <th>Gene</th>
-          <th>Mol. Wt.</th>
-          <!--<th>Edit</th>-->
-          <!--<th>Delete</th>-->
-        </tr>
-        <tr *ngFor="let oligo of oligos" (mouseover)="updateSelectedOligo(oligo)">
-          <td>{{oligo.gene}}</td>
-          <td>{{oligo.molecular_weight}}</td>
-          <!--<td><button class="btn btn-primary btn-sm">Edit</button> </td>-->
-          <!--<td><button class="btn btn-danger btn-sm" (click)="deleteOligo(oligo); $event.stopPropagation()">Delete</button></td>-->
-        </tr>
-      </table>
-
-    </div>
-    <div class="hidden-xs col-md-3 col-lg-3 col-xl-3" *ngIf="selectedOligo">
-      <div class="detail-box">
-        <div class="property">gene</div>
-        <div class="value">{{selectedOligo.gene}}</div>
-        <div class="property">molecular weight</div>
-        <div class="value">{{selectedOligo.molecular_weight}}</div>
-        <div class="property">id</div>
-        <div class="value">{{selectedOligo.pk}}</div>
-        <div class="property">added by</div>
-        <div class="value">{{selectedOligo.added_by}}</div>
-          <td><button class="btn btn-primary btn-sm btn-left">Edit</button> </td>
-          <td><button class="btn btn-danger btn-sm btn-right" (click)="deleteOligo(selectedOligo); $event.stopPropagation()">Delete</button></td>
+  <div class="hidden-xs col-md-3 col-lg-3 col-xl-3" *ngIf="selectedOligo">
+    <div class="detail-box">
+      <div class="form-group">
+        <label for="gene">Gene</label>
+        <input type="text" class="form-control" id="gene" [(ngModel)]="selectedOligo.gene" name="gene" [disabled]="disabled">
       </div>
-    </div>
 
+      <div class="form-group">
+        <label for="mol_wt">Molecular Weight</label>
+        <input type="number" class="form-control" id="mol_wt" [(ngModel)]="selectedOligo.molecular_weight"
+               name="mol_wt" [disabled]="disabled">
+      </div>
+
+      <div class="form-group">
+        <label for="id">id</label>
+        <input type="number" class="form-control" id="id" name="id" [(ngModel)]="selectedOligo.pk" disabled>
+      </div>
+
+      <div class="form-group">
+        <label for="added_by">Added by</label>
+        <input type="text" class="form-control" id="added_by" name="added_by" [(ngModel)]="selectedOligo.added_by" disabled>
+      </div>
+
+      <button class="btn btn-primary btn-sm btn-left" (click)="enable_edit()">Edit</button>
+      <button *ngIf="!disabled" class="btn btn-sm btn-success" (click)="update_edits(selectedOligo)">Save</button>
+      <button class="btn btn-danger btn-sm btn-right" (click)="deleteOligo(selectedOligo); $event.stopPropagation()">Delete</button>
+
+      <div *ngIf="response" class="alert alert-success">{{response}}</div>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    </div>
   </div>
+
+</div>
 
