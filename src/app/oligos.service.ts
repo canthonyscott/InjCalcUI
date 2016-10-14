@@ -14,7 +14,7 @@ export class OligosService {
     private loginService: LoginService
   ) { }
 
-  private oligos_url = 'https://injectioncalculatorapi.appspot.com/oligos/';
+  private oligos_url = 'https://www.canthonyscott.com:1107/api/oligos/';
   private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Token ' + this.loginService.getToken() });
 
   retrieve(): Observable<any> {
