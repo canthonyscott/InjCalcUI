@@ -12,7 +12,7 @@ export class LoginService{
 
   private token: string;
   private headers = new Headers({'Content-Type': 'application/json'});
-  private login_url = 'https://www.canthonyscott.com:1107/api/api-token-auth/';
+  private login_url = 'https://injcalcapi.herokuapp.com/api-token-auth/';
 
   constructor(private http: Http) { }
 
